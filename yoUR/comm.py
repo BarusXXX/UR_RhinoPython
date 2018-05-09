@@ -211,6 +211,7 @@ def get_messages(bytes, chunks_info):
     tcp_force = bytes[540:588]
     tool_vector = bytes[588:636]
     controller_time = bytes[740:748]
+    program_mode = bytes[1052:1060]
     
     # format type: int, 
     fmt_double6 = "!dddddd"
@@ -227,5 +228,7 @@ def get_messages(bytes, chunks_info):
     chunks_info["pose"]= pose
     time = unpack(fmt_double1,controller_time)
     chunks_info["time"]= time
+    mode = unpack(fmt_double1,program_mode)
+    chunks_info["program_mode"]= mode
 
 
